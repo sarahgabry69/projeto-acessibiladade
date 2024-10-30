@@ -1,36 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo de Capturar Objetos Caindo</title>
-    <style>
-        /* Definindo o estilo da tela de jogo */
-        canvas {
-            background-color: lightblue;
-            display: block;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-<body>
-    <canvas id="gameCanvas" width="500" height="500"></canvas>
-</body>
-</html>
-// Seleciona o canvas e o contexto 2D
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-
-// Variáveis do jogo
-let jogadorX = canvas.width / 2 - 25; // Posição inicial do jogador
-const jogadorLargura = 50; // Largura do jogador
-const jogadorAltura = 20; // Altura do jogador
-
-let objetoX = Math.random() * (canvas.width - 20); // Posição inicial do objeto
-let objetoY = 0; // O objeto começa no topo
-const objetoLargura = 20; // Largura do objeto
-const objetoAltura = 20; // Altura do objeto
-let velocidadeObjeto = 3; // Velocidade de queda do objeto
-
-let pontuacao = 0; // Pontuação inicial
-let jogoAtivo = true; // Controla se o jogo está ativo
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogo da Memória</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 10px;
+}
+.card {
+    display: flex;
+align-items: center;
+justify-content: center;
+background-color: blue;
+color: white;
+font-size: 24px;
+cursor: pointer;
+border-radius: 8px;
+user-select: none; /* impede a seleção de texto ao clicar nas cartas */
+}
+.fliped, .matched {
+    cursor: default;
+}
