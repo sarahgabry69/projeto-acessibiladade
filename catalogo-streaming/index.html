@@ -185,4 +185,38 @@
       document.getElementById('ano').value = '';
       document.getElementById('sinopse').value = '';
     }
-  
+  // Função para editar um filme
+function editarFilme(index) {
+    const filme = catalogo[index];
+    document.getElementById('nome').value = filme.nome;
+    document.getElementById('classificacao').value = filme.classificacao;
+    document.getElementById('duracao').value = filme.duracao;
+    document.getElementById('genero').value = filme.genero;
+    document.getElementById('ano').value = filme.ano;
+    document.getElementById('sinopse').value = filme.sinopse;
+    filmeEditando = index; // Variável global para armazenar o índice do filme sendo editado
+    document.getElementById('btn-atualizar').style.display = 'inline';
+}
+
+// Função para atualizar um filme editado
+function atualizarFilme() {
+    if (filmeEditando !== null) {
+        catalogo[filmeEditando] = {
+            nome: document.getElementById('nome').value,
+            classificacao: document.getElementById('classificacao').value,
+            duracao: document.getElementById('duracao').value,
+            genero: document.getElementById('genero').value,
+            ano: document.getElementById('ano').value,
+            sinopse: document.getElementById('sinopse').value
+        };
+        alert('Filme atualizado com sucesso!');
+        limparCampos();
+        listarFilmes();
+    }
+}
+// Função para excluir um filme
+function excluirFilme(index) {
+    catalogo.splice(index, 1);
+    alert("Filme excluído com sucesso!");
+    listarFilmes();
+}
